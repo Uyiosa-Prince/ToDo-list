@@ -63,6 +63,9 @@
             </div>
 
             <button type="submit" class="btn btn-primary"> Register </button>
+
+            <br/>
+            <p class="log">Already have an account? <a href="login.php">Login here</a></p>
             
 
         </form>

@@ -26,7 +26,8 @@ $result = mysqli_query($connection, $vEmail); //mysqli_query($link variable, $qu
 $num = mysqli_num_rows($result);//verify if the user already exists on the row of the table.this function returns bool 0 or 1
 
 if ($num == 1){
-	echo "email already exist";
+    echo "<script> alert('email already exist'); </script>";
+	//echo "email already exist";
 }else  {
 	$reg = "INSERT INTO usertable (firstName, lastName, email, phoneNumber, DOB, address, state, city, password)
              VALUES ('$firstname', '$lastname', '$email', '$phoneno', '$dob', '$address', '$state', '$city', '$password')"; // reg = register; just a variable to mean register the input
