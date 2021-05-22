@@ -1,4 +1,7 @@
+<?php 
 $HOST = 'localhost';
 $USER = 'root';
 $PASSWORD = '';
-$NAME = 'library_db';
+$DBNAME = 'Classified_Ads_db';
+
+?>
