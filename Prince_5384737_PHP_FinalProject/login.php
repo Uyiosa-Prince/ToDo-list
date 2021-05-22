@@ -11,7 +11,7 @@
 
         <h2> Login </h2>
 
-        <form action="validation.php" method="post">
+        <form action="includes/Validation.php" method="post">
             
             <div class="">
                 <label>Email</label>
@@ -26,7 +26,8 @@
             <button type="submit" class=""> Login </button>
             <br/>
 
-            <p class="reg">Don't yet have an account? <a href="register.php">create an account</a></p>        
+            <p class="reg">Don't yet have an account? <a href="register.php">create an account</a></p>
+           
 
         </form>
     </div>

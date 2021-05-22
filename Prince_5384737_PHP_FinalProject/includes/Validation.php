@@ -20,11 +20,11 @@
 
 
       if ($check_rows == 1){
-        $_SESSION['email'] = $email;
-        header('location:home.php');
+        $_SESSION['username'] = $email;
+        header('location:../home.php');
     }
     else  {
-        header('location:login.php');
+        header('location:../login.php');
     }
 
 ?>

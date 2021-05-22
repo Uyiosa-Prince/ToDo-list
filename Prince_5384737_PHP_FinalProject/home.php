@@ -1,8 +1,8 @@
 <?php
-if(isset($_SESSION['email'])) {
+session_start();
+if(!isset($_SESSION['username'])) {
     header('location: login.php');
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -11,11 +11,11 @@ if(isset($_SESSION['email'])) {
 <title>Classified Ads-Home</title>
 </header>
 <body>
-<div style=" float:left;" class="logout">
+<div style=" float:right;" class="logout">
 <a href="login.php">Log out</a>
 </div>
 
-<h1> Welcome <?php echo $_SESSION['email'] ?></h1>
+<h1> Welcome <?php echo $_SESSION['username']; ?> </h1>
 
 </body>
 </html>
