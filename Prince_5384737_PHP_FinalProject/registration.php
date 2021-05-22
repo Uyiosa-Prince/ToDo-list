@@ -29,7 +29,7 @@
 
             <div class="">
                 <label>Phone No</label>
-                <input type="text" name="phoneNo" class="#" required />
+                <input type="text" name="phoneno" class="#" required />
             </div>
 
             <div class="">
@@ -57,7 +57,13 @@
                 <input type="password" name="password" class="#" required />
             </div>
 
+            <div class=>
+                <label>Confirm Password</label>
+                <input type="password" name="confirmpassword" class="#" required />
+            </div>
+
             <button type="submit" class="btn btn-primary"> Register </button>
+            
 
         </form>
     </div>
