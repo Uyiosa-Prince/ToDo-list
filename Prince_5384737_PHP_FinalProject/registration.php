@@ -1,73 +1,37 @@
-<!DOCTYPE html>
-<html>
+<?php
+session_start(); //this function tell php to start function  step-1
 
-<head>
-    <title>classified ads/login</title>
-    <link rel="stylesheet" href="includes/style.css" type="text/css" />
-</head>
+header('location:register.php'); //step2 add any php file in header tag with location.
 
-<body>
-    <div class="registration">
+$connection = mysqli_connect('localhost','root',''); //for connect host,name,password,db   [LINK VARIABLE]
 
-        <h2> Register </h2>
+mysqli_select_db($connection, 'Classified_Ads_db');  // connect with db
 
-        <form action="registration.php" method="post">
-            <div class="">
-                <label>First Name</label>
-                <input type="text" name="firstname" class="#" required />
-            </div>
+$firstname = $_POST['firstname'];    //make new var for connect php to database  taking data from input name and password and store at $name and $password
+$lastname = $_POST['lastname'];
+$email = $_POST['email'];
+$phoneno = $_POST['phoneno'];
+$dob = $_POST['dob'];
+$address = $_POST['address'];
+$state = $_POST['state'];
+$city = $_POST['city'];
+$password = $_POST['password'];
 
-            <div class="">
-                <label>Last Name</label>
-                <input type="text" name="lastname" class="#" required />
-            </div>
+// also do for phone number later
+$vEmail = "SELECT * FROM usertable Where  email = '$email'";  //query to verify the email input at email DB column [QUERY VARIABLE]
+// No query to verify password because 2 users can accidentally use same password, names, city etc does'nt matter :)
 
-            <div class="">
-                <label>Email</label>
-                <input type="email" name="email" class="#" required />
-            </div>
+$result = mysqli_query($connection, $vEmail); //mysqli_query($link variable, $query variable);
 
-            <div class="">
-                <label>Phone No</label>
-                <input type="text" name="phoneno" class="#" required />
-            </div>
+$num = mysqli_num_rows($result);//verify if the user already exists on the row of the table.this function returns bool 0 or 1
 
-            <div class="">
-                <label>DOB</label>
-                <input type="date" name="dob" class="#" required />
-            </div>
+if ($num == 1){
+	echo "email already exist";
+}else  {
+	$reg = "INSERT INTO usertable (firstName, lastName, email, phoneNumber, DOB, address, state, city, password)
+             VALUES ('$firstname', '$lastname', '$email', '$phoneno', '$dob', '$address', '$state', '$city', '$password')"; // reg = register; just a variable to mean register the input
+	mysqli_query($connection,$reg);
+    echo "Registration Done Sucessfully";
+}
 
-            <div class="">
-                <label>Address</label>
-                <input type="text" name="address" class="#" required />
-            </div>
-
-            <div class="">
-                <label>State</label>
-                <input type="text" name="state" class="#" required />
-            </div>
-
-            <div class="">
-                <label>City</label>
-                <input type="text" name="city" class="#" required />
-            </div>
-
-            <div class=>
-                <label>Password</label>
-                <input type="password" name="password" class="#" required />
-            </div>
-
-            <div class=>
-                <label>Confirm Password</label>
-                <input type="password" name="confirmpassword" class="#" required />
-            </div>
-
-            <button type="submit" class="btn btn-primary"> Register </button>
-            
-
-        </form>
-    </div>
-
-</body>
-
-</html>
+?>
