@@ -24,6 +24,7 @@
         header('location:../home.php');
     }
     else  {
+        $_SESSION['login'] = "<div style = 'color : #CC0000'>"."<b>invalid email or password!</b></div>";
         header('location:../login.php');
     }
 

@@ -40,6 +40,7 @@ if ($emailRow == 1){
 if ($phoneRow == 1){
 	$phonenoErr='This phone number already exist';
 }
+
 else  {
 	$reg = "INSERT INTO usertable (firstName, lastName, email, phoneNumber, DOB, address, state, city, password)
              VALUES ('$firstname', '$lastname', '$email', '$phoneno', '$dob', '$address', '$state', '$city', '$password')"; // reg = register; just a variable to mean register the input

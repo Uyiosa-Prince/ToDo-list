@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <title>classified ads/login</title>
+    <title>classified ads-Registration</title>
     <link rel="stylesheet" href="includes/style.css" type="text/css" />
 </head>
 
-<body>
+<body class="register_body">
 
     <!-- Validate user inputs and assign error messages-->
 <?php
@@ -79,6 +79,7 @@ if (isset($_POST['submit'])) {
         }
  
 }
+
 ?>
 <!-- //=========================================================================================================================================== -->
 
@@ -87,68 +88,68 @@ if (isset($_POST['submit'])) {
 
         <h2> Register </h2>
 
-        <form action="registration.php" method="post">
-            <div class="">
-                <label>First Name</label>
+        <form action="registration.php" method="post" class="Rform">
+            <div class="firstname">
+                <label>First Name</label><br/>
                 <input type="text" name="firstname" class="#" required />
                 <span style="color: #c00;" class="error"><?php echo $nameErr;?></span>
             </div>
-
-            <div class="">
-                <label>Last Name</label>
+            
+            <div class="lastname">
+                <label>Last Name</label><br/>
                 <input type="text" name="lastname" class="#" required />
                 <span style="color: #c00;" class="error"><?php echo $nameErr;?></span>
             </div>
 
-            <div class="">
-                <label>Email</label>
+            <div class="email">
+                <label>Email</label><br/>
                 <input type="email" name="email" class="#" required />
-                <span style="color: #c00;" class="error"><?php echo $emailErr;?></span>                
+                <span style="color: #c00;" class="error"><?php echo $emailErr?></span>                 
             </div>
 
-            <div class="">
-                <label>Phone No</label>
+            <div class="phoneno">
+                <label>Phone No</label><br/>
                 <input type="text" name="phoneno" class="#" required />
                 <span style="color: #c00;" class="error"><?php echo $phonenoErr;?></span>
             </div>
 
-            <div class="">
-                <label>DOB</label>
+            <div class="dob">
+                <label>DOB</label><br/>
                 <input type="date" name="dob" class="#" required />
                 <span style="color: #c00;" class="error"><?php echo $dobErr;?></span>
             </div>
 
-            <div class="">
-                <label>Address</label>
+            <div class="address">
+                <label>Address</label><br/>
                 <input type="text" name="address" class="#" required />
                 <span style="color: #c00;" class="error"><?php echo $addressErr;?></span>
             </div>
 
-            <div class="">
-                <label>State</label>
+            <div class="state">
+                <label>State</label><br/>
                 <input type="text" name="state" class="#" required />
-                <span style="color: #c00;" class="error"><?php echo $stateErr;?></span>
+                <span style="color: #c00;" class="error"><?php echo $stateErr;?></span><br/>
             </div>
 
-            <div class="">
-                <label>City</label>
+            <div class="city">
+                <label>City</label><br/>
                 <input type="text" name="city" class="#" required />
-                <span style="color: #c00;" class="error"><?php echo $cityErr;?></span>
+                <span style="color: #c00;" class="error"><?php echo $cityErr;?></span><br/>
             </div>
 
-            <div class=>
-                <label>Password</label>
+            <div class="password">
+                <label>Password</label><br/>
                 <input type="password" name="password" class="#" required />
-                <span style="color: #c00;" class="error"><?php echo $passwordErr;?></span>
+                <span style="color: #c00;" class="error"><?php echo $passwordErr;?></span><br/>
             </div>
 
-            <div class=>
-                <label>Confirm Password</label>
+            <div class="confirmPassword">
+                <label>Confirm Password</label><br/>
                 <input type="password" name="confirmPassword" class="#" required />
-                <span style="color: #c00;" class="error"><?php echo $confirmPasswordErr;?></span>
+                <span style="color: #c00;" class="error"><?php echo $confirmPasswordErr;?></span><br/>
             </div>
-
-            <button type="submit" class="#"> Register </button>
+            <br/>
+            <button type="submit" class="submit"> Register </button>
 
             <br/>
             <p class="log">Already have an account? <a href="login.php">Login here</a></p>
