@@ -1,0 +1,22 @@
+* {
+    margin: none;
+    padding: none;
+    text-decoration: none;
+}
+
+.form-group {
+    margin: 30px auto;
+    width: 50%;
+}
+
+.form-group input {
+    width: 50%;
+}
+
+.form-group button {
+    margin-top: 20px;
+}
+
+.table {
+    width: 50%;
+}
