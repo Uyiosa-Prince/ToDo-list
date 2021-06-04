@@ -4,12 +4,12 @@
 $HOST = 'localhost';
 $USER = 'root';
 $PASSWORD = '';
-// $DBNAME = 'todo_list';
-$DBNAME = 'Classified_Ads_db';
+$DBNAME = 'todo_list';
 
-$conn = mysqli_connect($HOST, $USER, $PASSWORD, $DBNAME);
 
-if ($conn === false) {
+$connection = mysqli_connect($HOST, $USER, $PASSWORD, $DBNAME);
+
+if ($connection === false) {
     die("Error: Unable to connect".mysqli_connect_error());
 }
 
