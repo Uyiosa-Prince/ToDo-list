@@ -58,10 +58,40 @@
        header("Location:index.php");
    }
 
+   //button done task
+   if(isset($_GET['done'])){
+    $id = $_GET['done'];
+
+    //  $connection->query("ALTER TABLE tasks ALTER Completed SET DEFAULT '0', ALTER in_Progress SET DEFAULT '1'") 
+    //                 or die("Connection Failed ".mysqli_connect_error());
+    //   $connection->query("UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE id = '$id'") 
+    //                  or die("Connection Failed ".mysqli_connect_error());
+    //   $update_query = "UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE id = '$id'";
+    //   mysqli_query($connection, $update_query);
+      $Squery = "SELECT FROM tasks WHERE id = '$id'";
+      $Uresult = mysqli_query($connection, $Squery);
+
+      if ($Uresult == true){  
+        $update_query = "UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE id = '$id'";
+        mysqli_query($connection, $update_query);
+
+        // add session to display messages to user when cliked
+        $_SESSION['message'] = "Task Completed!";
+        $_SESSION['msg_type'] = "success";
+        header("Location:index.php");
+    }
+    else{
+        // add session to display messages to user when cliked
+        $_SESSION['message'] = "Task Error!";
+        $_SESSION['msg_type'] = "danger";
+        header("Location:index.php");
+    }
+    
+}
+
 
    //button to delete, remove, clear all tasks
    if(isset($_POST['clear'])){
-       $empty = "";
         $check_query = "SELECT * FROM tasks";
         $check_result = mysqli_query($connection,$check_query);
         $row = $check_result -> fetch_assoc();

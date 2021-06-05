@@ -29,3 +29,8 @@
     /* background-color: aliceblue; */
     width: 50%;
 }
+
+#completed,
+#in-progress {
+    display: none;
+}
