@@ -1,85 +1,69 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> To do List </title>
-    <!--My Github -> https://github.com/Uyiosa-Prince/To-Do-list -->
-    <!--BootStrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<?php include "includes/header.php"; ?>
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-    <!-- Icons from font awesome-->
-    <script src="https://kit.fontawesome.com/0a31f47d96.js" crossorigin="anonymous"></script>
-    <!--JQuery link-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!--captcha Link-->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<body class="body">
+        <?php require_once "process.php"; ?> 
 
-    <!--stylesheet file Link-->
-    <link rel="stylesheet" href="includes/style.css">
-</head>
-<body>
-        <?php require_once "process.php"; ?>
-        <!-- <?php //require_once "process.php"; ?> -->
+        <?php if(isset($_SESSION['message'])): ?>
+        <div class="alert alert-<?php echo $_SESSION['msg_type'];?>"> 
+            <?php 
+                echo $_SESSION['message']; 
+                unset($_SESSION['message']);
+            ?>
+        </div>
+        <?php endif; ?>
+
+    
     <div class="row justify-content-center">
         <!-- Form to add task from database-->
         <div class="form-group">
             <form method="post" action="process.php">
-                <input type="hidden" name="code" id="code" /> <!--code in table row-->
-                <input type="text" placeholder="Enter Task"  name="task_input" class="form-control" required/>
+                <!--<input type="hidden" name="code" id="code" /> code in table row-->
+                <input type="text" placeholder="Enter Task"  name="task_input" class="form-control"/>
                 <button type="submit" name="submit" class="btn btn-primary">Add Task</button>
-                <button type="submit" name="list" class="btn btn-primary">List</button>
+                <button type="submit" name="clear" class="btn btn-danger">Clear all</button> 
+                <!-- <button type="submit" name="list" class="btn btn-primary">List</button>
                 <button type="submit" name="view" class="btn btn-info">View Tasks</button>
                 <button type="submit" name="delete" class="btn btn-danger">Delete</button>
                 <button type="submit" name="done" class="btn btn-success" id="btnDone">Done</button>
-                <button type="submit" name="remove" class="btn btn-danger" id="btnRemove">Remove</button>
+                <button type="submit" name="remove" class="btn btn-danger" id="btnRemove">Remove</button> -->
             </form>
         </div>
     </div>
 
          <!-- display as table-->
 <?php
-    $displayResult = $connection->query("SELECT * FROM tasks WHERE task_Name = 'task_input'") or die("Connection Failed ".mysqli_connect_error());
+    $displayResult = $connection->query("SELECT * FROM tasks") or die("Connection Failed ".mysqli_connect_error());
     // print_r($displayResult-> fetch_assoc()); used to display data in database with, print query fetched from database;
     //  print_r($displayResult-> fetch_assoc()); echo "<br/>"; 
     //  print_r($displayResult-> fetch_assoc());
-
-
 ?>
-         <div class="row justify-content-center">
-             <table class="table table-striped table-hover"> <!--table-striped  thead-light-->
-                <thead>
-                    <tr>
-                        <th scope="col">Code</th> <!--from hidden input with name and id="code"-->
-                        <th scope="col">Task</th>
-                        <th scope="col" colspan="2">Action</th> <!--colspan="2"-->
-                    </tr>
-                </thead>
-                
-                <!--Display user input data from database-->
-                    <?php
-                    // if ($_SERVER["REQUEST_METHOD"] == 'POST'){
-                    //  if (isset($_POST['list'])){
-                    //  //$displayResult = $connection->query("SELECT FROM tasks WHERE task_Name = 'task_input'") or die("Connection Failed ".mysqli_connect_error());
-                    //     while ($row = $displayResult->fetch_assoc()): 
-                    //     ?>
-                         <tr>
-                             <td><?php //echo $row['task_ID']; ?></td>
-                             <td><?php //echo $row['task_Name']; ?></td>
-                             <td></td>
-                         </tr>
-                     <?php 
-                    // endwhile;
-                    //  }
-                    // }
-                             
-                     ?> <!--To close the opened for loop-->
 
-            </table>
-         </div>
+
+<div class="row justify-content-center">
+<!-- <div><a href="process.php?clear" class="btn btn-warning">Clear all</a></div> -->
+ <table class="table table-striped table-hover">  <!--table-striped  thead-light -->
+    <thead class="table thead-dark">
+        <tr>
+            <!--<th scope="col">Id</th> from hidden input with name and id="code" -->
+            <th scope="col">Task</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <?php while ($row = $displayResult->fetch_assoc()): ?>
+    <tbody>
+        <tr>
+            <!-- <td><?php //echo $row['task_ID'];?></td> -->
+            <td><?php echo $row['task_Name'];?></td>
+            <td>
+                <a href="index.php?edit=<?php echo $row['task_ID'];?>" class="btn btn-info">Edit</a>
+                <a href="process.php?remove=<?php echo $row['task_ID'];?>" class="btn btn-danger">Remove</a>
+            </td>
+        </tr>
+    </tbody>
+        <?php endwhile; ?>
+ 
+</table>
+</div> 
 </body>
 <footer>
 </footer>

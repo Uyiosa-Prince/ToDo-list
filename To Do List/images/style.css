@@ -4,19 +4,28 @@
     text-decoration: none;
 }
 
+.body {
+    background-color: antiquewhite;
+}
+
 .form-group {
+    /* background-color: aliceblue; */
     margin: 30px auto;
     width: 50%;
 }
 
 .form-group input {
     width: 50%;
+    /* margin-top: 30px;
+    margin-bottom: 20px; */
 }
 
 .form-group button {
     margin-top: 20px;
+    /* margin-bottom: 30px; */
 }
 
 .table {
+    /* background-color: aliceblue; */
     width: 50%;
 }

@@ -8,9 +8,16 @@
 
    // store user input in a variable
    if (isset($_POST['submit'])){
+        if (empty($_POST['task_input']) || ctype_space($_POST['task_input'])){
+               // add session to display messages to user when cliked
+            $_SESSION['message'] = "ERROR: Task field empty!";
+            $_SESSION['msg_type'] = "danger";
+            header("Location:index.php");
+        }
+        else{
+
      // store user input in a variable
          $task_input = $_POST['task_input'];
-        //   $connection = include "includes/DB_Config.php";
 
        // insert the the userinput into the database
    $query = "SELECT * FROM tasks WHERE task_Name = '$task_input'";
@@ -20,39 +27,64 @@
    $num_rows = mysqli_num_rows($result);
 
    if ($num_rows == 1){
-       echo "<div> task already exists </div>";
+    //    echo "<div> task already exists </div>";
+
+    // add session to display messages to user when cliked
+    $_SESSION['message'] = "Task already exists!";
+    $_SESSION['msg_type'] = "info";
+    header("Location:index.php");
    }
   else{
        $addTask = "INSERT INTO tasks (task_Name) VALUES('$task_input')";
        mysqli_query($connection,  $addTask);
-   }
-
-   }
-
-   // Display data
-
-   if ($_SERVER["REQUEST_METHOD"] == 'POST'){
-    if (isset($_POST['list'])){
-        $task_input = $_POST['task_input'];
-    $displayResult = $connection->query("SELECT FROM tasks WHERE task_Name = '$task_input'") or die("Connection Failed ".mysqli_connect_error());
-       while ($row = $displayResult->fetch_assoc()): 
-       ?>
-       <tr>
-           <td><?php echo $row['task_ID']; ?></td>
-           <td><?php echo $row['task_Name']; ?></td>
-           <td></td>
-       </tr>
-   <?php 
-   endwhile;
+            // add session to display messages to user when cliked
+    $_SESSION['message'] = "Task saved successfully!";
+    $_SESSION['msg_type'] = "success";
+    header("Location:index.php");
     }
+        }
+   }
+   
+
+   //button delete task
+   if(isset($_GET['remove'])){
+       $id = $_GET['remove'];
+       $connection->query("DELETE FROM tasks WHERE task_ID = '$id'") or die("Connection Failed ".mysqli_connect_error());
+
+       // add session to display messages to user when cliked
+       $_SESSION['message'] = "Task deleted successfully!";
+       $_SESSION['msg_type'] = "danger";
+
+       header("Location:index.php");
    }
 
 
-//    if (isset($_POST['submit'])){
-//     $task_input = $_POST['task_input'];
-//     AddTask($task_input);
-  
+   //button to delete, remove, clear all tasks
+   if(isset($_POST['clear'])){
+       $empty = "";
+        $check_query = "SELECT * FROM tasks";
+        $check_result = mysqli_query($connection,$check_query);
+        $row = $check_result -> fetch_assoc();
+        $id = $row['task_ID'];
 
+        if(is_null($id)){
+            // add session to display messages to user when cliked
+    $_SESSION['message'] = "ERROR: You do not have any saved task to clear!";
+    $_SESSION['msg_type'] = "danger";
 
+    header("Location:index.php");
+        }
+        else{
+    // $connection->query("DELETE * FROM tasks") or die("Connection Failed ".mysqli_connect_error());
+     $delete_query = "TRUNCATE TABLE tasks";
+     mysqli_query($connection,  $delete_query);
 
-?>
+    // add session to display messages to user when cliked
+    $_SESSION['message'] = "All Task Removed successfully!";
+    $_SESSION['msg_type'] = "danger";
+
+    header("Location:index.php");
+    }
+}
+
+   ?>
