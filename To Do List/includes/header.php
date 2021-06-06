@@ -19,7 +19,9 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!--stylesheet file Link-->
-    <link rel="stylesheet" href="../images/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Style.css">  -->
+    <link rel="stylesheet" type="text/css" href="images/style.css"> 
+    <!-- <link rel="stylesheet" type="text/css" href="../images/Css.css"> -->
     <!--JavaScript file Link-->
-    <script src="../images/script.js"></script>
+    <script src="images/script.js" language="JavaScript"></script>
 </head>

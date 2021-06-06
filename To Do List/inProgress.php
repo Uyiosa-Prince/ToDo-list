@@ -5,7 +5,7 @@
     //  print_r($displayResult-> fetch_assoc()); echo "<br/>"; 
     //  print_r($displayResult-> fetch_assoc());
 ?>
-
+ 
 
 <div class="row justify-content-center">
 <!-- <div><a href="process.php?clear" class="btn btn-warning">Clear all</a></div> -->
@@ -32,7 +32,7 @@
  
 </table>
 </div> 
-</body>
+<!-- </body>
 <footer>
 </footer>
-</html>
+</html> -->

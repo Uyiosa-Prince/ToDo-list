@@ -68,13 +68,14 @@
     //                  or die("Connection Failed ".mysqli_connect_error());
     //   $update_query = "UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE id = '$id'";
     //   mysqli_query($connection, $update_query);
-      $Squery = "SELECT FROM tasks WHERE id = '$id'";
-      $Uresult = mysqli_query($connection, $Squery);
+    //   $Squery = "SELECT FROM tasks WHERE task_ID = '$id'";
+    //   $Uresult = mysqli_query($connection, $Squery);
 
-      if ($Uresult == true){  
-        $update_query = "UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE id = '$id'";
-        mysqli_query($connection, $update_query);
+     // $update_query = "UPDATE `tasks` SET `in_Progress` = '0', `Completed` = '1' WHERE `tasks`.`task_ID` = $id;";
+     $update_query = "UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE task_ID = '$id'";
+     $Update_result = mysqli_query($connection, $update_query);
 
+      if ($Update_result){  
         // add session to display messages to user when cliked
         $_SESSION['message'] = "Task Completed!";
         $_SESSION['msg_type'] = "success";
@@ -112,6 +113,28 @@
     // add session to display messages to user when cliked
     $_SESSION['message'] = "All Task Removed successfully!";
     $_SESSION['msg_type'] = "danger";
+
+    header("Location:index.php");
+    }
+}
+   //button display in progress and complete tasks
+   if(isset($_GET['btn-in-progress'])){
+        $progress_query = "SELECT FROM tasks WHERE in_Progress = '1'";
+        $progress_result = mysqli_query($connection,$progress_query);
+        $row = $progress_result -> fetch_assoc();
+        $id = $row['task_ID'];
+
+        if(is_null($id)){
+            // add session to display messages to user when cliked
+    $_SESSION['message'] = "You do not have any saved task yet!";
+    $_SESSION['msg_type'] = "danger";
+
+    header("Location:index.php");
+        }
+        else{
+    // add session to display messages to user when cliked
+    $_SESSION['message'] = "tasks in progress!";
+    $_SESSION['msg_type'] = "info";
 
     header("Location:index.php");
     }

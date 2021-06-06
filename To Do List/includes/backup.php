@@ -1,7 +1,7 @@
-<?php include "includes/header.php"; ?>
+<?php include "./header.php"; ?>
 
 <body class="body">
-        <?php require_once "process.php"; ?> 
+        <?php require_once "../process.php"; ?> 
 
         <?php if(isset($_SESSION['message'])): ?>
         <div class="alert alert-<?php echo $_SESSION['msg_type'];?>"> 
