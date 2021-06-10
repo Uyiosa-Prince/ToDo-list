@@ -25,7 +25,10 @@
             <tbody class="table">
                 <tr>
                     <td>
-                        <h3>No task to display!</h3>
+                        <h3>Click on in progress to see your tasks!</h3>
+                    </td>
+                    <td>
+                        <h3>Click on completed to see tasks you have done!</h3>
                     </td>
                 </tr>
             </tbody>
