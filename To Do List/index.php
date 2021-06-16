@@ -21,7 +21,7 @@
     </div>
     <div class="row justify-content-center no-task" id="no-task">
         <!-- show link to in_progress and completed files-->
-        <table class="table table-striped table-hover ">
+        <!-- <table class="table table-striped table-hover ">
             <tbody class="table">
                 <tr>
                     <td>
@@ -32,7 +32,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
     </div>
 
     <div id="in-progress">

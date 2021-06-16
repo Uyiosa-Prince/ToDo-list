@@ -31,7 +31,8 @@
 }
 
 #completed,
-#in-progress {
+#in-progress,
+#no-task {
     display: none;
 }
 
