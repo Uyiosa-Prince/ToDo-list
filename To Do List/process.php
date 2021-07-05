@@ -51,7 +51,7 @@
        $id = $_GET['remove'];
        $connection->query("DELETE FROM tasks WHERE task_ID = '$id'") or die("Connection Failed ".mysqli_connect_error());
 
-       // add session to display messages to user when cliked
+       // add session to display messages to user when clicked
        $_SESSION['message'] = "Task deleted successfully!";
        $_SESSION['msg_type'] = "danger";
 
