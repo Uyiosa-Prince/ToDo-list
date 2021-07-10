@@ -8,10 +8,16 @@
 // $DBNAME = 'todo_list';
 
 // Remote mysql web lauch connection
-$HOST = 'remotemysql.com';
-$USER = 'k1PrpRfoLE';
-$PASSWORD = 'CIv4VLCXI1';
-$DBNAME = 'k1PrpRfoLE';
+// $HOST = 'remotemysql.com';
+// $USER = 'k1PrpRfoLE';
+// $PASSWORD = 'CIv4VLCXI1';
+// $DBNAME = 'k1PrpRfoLE';
+
+// infinity free mysql web lauch connection
+$HOST = 'sql200.epizy.com';
+$USER = 'epiz_29108012';
+$PASSWORD = '1$Fluteman';
+$DBNAME = 'epiz_29108012_todo_list';
 
 
 $connection = mysqli_connect($HOST, $USER, $PASSWORD, $DBNAME);
