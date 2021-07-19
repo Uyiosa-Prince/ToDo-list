@@ -8,6 +8,7 @@
 
    // store user input in a variable
    if (isset($_POST['submit'])){
+       // to validate the task input field
         if (empty($_POST['task_input']) || ctype_space($_POST['task_input'])){
                // add session to display messages to user when cliked
             $_SESSION['message'] = "ERROR: Task field empty!";
