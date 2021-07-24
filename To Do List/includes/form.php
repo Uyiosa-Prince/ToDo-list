@@ -1,4 +1,4 @@
-<body class="body">
+   <body class="body">
         <?php require_once "process.php"; ?> 
 
         <?php if(isset($_SESSION['message'])): ?>
