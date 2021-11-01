@@ -62,16 +62,6 @@
    //button done task
    if(isset($_GET['done'])){
     $id = $_GET['done'];
-
-    //  $connection->query("ALTER TABLE tasks ALTER Completed SET DEFAULT '0', ALTER in_Progress SET DEFAULT '1'") 
-    //                 or die("Connection Failed ".mysqli_connect_error());
-    //   $connection->query("UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE id = '$id'") 
-    //                  or die("Connection Failed ".mysqli_connect_error());
-    //   $update_query = "UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE id = '$id'";
-    //   mysqli_query($connection, $update_query);
-    //   $Squery = "SELECT FROM tasks WHERE task_ID = '$id'";
-    //   $Uresult = mysqli_query($connection, $Squery);
-
      // $update_query = "UPDATE `tasks` SET `in_Progress` = '0', `Completed` = '1' WHERE `tasks`.`task_ID` = $id;";
      $update_query = "UPDATE tasks SET in_Progress = '0', Completed = '1' WHERE task_ID = '$id'";
      $Update_result = mysqli_query($connection, $update_query);

@@ -19,21 +19,7 @@
             </thead>
         </table>
     </div>
-    <div class="row justify-content-center no-task" id="no-task">
-        <!-- show link to in_progress and completed files-->
-        <!-- <table class="table table-striped table-hover ">
-            <tbody class="table">
-                <tr>
-                    <td>
-                        <h3>Click on in progress to see your tasks!</h3>
-                    </td>
-                    <td>
-                        <h3>Click on completed to see tasks you have done!</h3>
-                    </td>
-                </tr>
-            </tbody>
-        </table> -->
-    </div>
+   
 
     <div id="in-progress">
         <?php include "inProgress.php"; ?>

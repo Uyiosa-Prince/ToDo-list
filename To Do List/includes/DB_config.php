@@ -1,11 +1,11 @@
 <?php
 // connect to DB server
 
-// // Development connection
-// $HOST = 'localhost';
-// $USER = 'root';
-// $PASSWORD = '';
-// $DBNAME = 'todo_list';
+// Development connection
+$HOST = 'localhost';
+$USER = 'root';
+$PASSWORD = '';
+$DBNAME = 'todo_list';
 
 // Remote mysql web lauch connection
 // $HOST = 'remotemysql.com';
@@ -19,11 +19,11 @@
 // $PASSWORD = '1$Fluteman';
 // $DBNAME = 'epiz_29108012_todo_list';
 
-// Heroku JawDB mysql web lauch connection
-$HOST = 's465z7sj4pwhp7fn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-$USER = 'firf8pu1k6n6mbbf';
-$PASSWORD = 'gm95l3761tiil3kz';
-$DBNAME = 'nsqyfecx76li0nda';
+// // Heroku JawDB mysql web lauch connection
+// $HOST = 's465z7sj4pwhp7fn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+// $USER = 'firf8pu1k6n6mbbf';
+// $PASSWORD = 'gm95l3761tiil3kz';
+// $DBNAME = 'nsqyfecx76li0nda';
 
 
 $connection = mysqli_connect($HOST, $USER, $PASSWORD, $DBNAME);
